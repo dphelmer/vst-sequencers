@@ -110,6 +110,56 @@ int main ()
 	CHECK (ons == 1);
 	CHECK (offs == ons);
 
+	// 3b) loop wrap with Live-style split block: loop 0..2, last block before the end is short and
+	// our tempo math overshoots 2.0 slightly. Beat 2 (loop end) must NOT fire; beat 0 must fire at
+	// offset 0 of the first block after the wrap, and exactly once per pass.
+	proc.setProcessing (false);
+	proc.setProcessing (true);
+	ons = offs = ccs = 0;
+	onPpq.clear ();
+	ctx.cycleStartMusic = 0.;
+	ctx.cycleEndMusic = 2.;
+	const double ppqPerSample = tempo / 60. / sr;
+	auto runLoop = [&] (double p, int n, const char* tag) {
+		ctx.state = ProcessContext::kTempoValid | ProcessContext::kProjectTimeMusicValid |
+		            ProcessContext::kTimeSigValid | ProcessContext::kPlaying |
+		            ProcessContext::kCycleActive | ProcessContext::kCycleValid;
+		ctx.projectTimeMusic = p;
+		data.numSamples = n;
+		outEvents.clear ();
+		proc.process (data);
+		for (int i = 0; i < outEvents.getEventCount (); ++i)
+		{
+			Event e;
+			outEvents.getEvent (i, e);
+			if (e.type == Event::kNoteOnEvent)
+			{
+				++ons;
+				onPpq.push_back (e.ppqPosition);
+				std::printf ("%-6s ppq=%.5f NOTE ON  off=%d\n", tag, p, e.sampleOffset);
+			}
+		}
+	};
+	{
+		double p = 0.;
+		for (int pass = 0; pass < 3; ++pass)
+		{
+			while (p + N * ppqPerSample < 2.0)
+			{
+				runLoop (p, N, "loop2");
+				p += N * ppqPerSample;
+			}
+			// short block that ends 0.00002 beat past the loop end (float overshoot)
+			int n = static_cast<int> ((2.0 - p) / ppqPerSample) + 1;
+			runLoop (p, n, "split");
+			p = 0.; // host wraps to cycle start
+		}
+		data.numSamples = N;
+	}
+	CHECK (ons == 6);                      // beats 0 and 1, three passes; never beat 2
+	for (double v : onPpq)
+		CHECK (v == 0.0 || v == 1.0);
+
 	// 4) stopped blocks emit nothing
 	ons = offs = ccs = 0;
 	for (int i = 0; i < 10; ++i)

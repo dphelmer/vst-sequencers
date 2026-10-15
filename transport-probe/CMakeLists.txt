@@ -26,3 +26,22 @@ add_executable(ProbeSim EXCLUDE_FROM_ALL
     tests/sim.cpp source/probeprocessor.cpp)
 target_include_directories(ProbeSim PRIVATE source)
 target_link_libraries(ProbeSim PRIVATE sdk sdk_hosting "-framework CoreFoundation")
+
+# Ninja/Makefile generators get CMake's default Info.plist (CFBundlePackageType=APPL, empty
+# identifier, no PkgInfo), which makes Finder show the .vst3 as a plain folder. Use a BNDL plist
+# and ship PkgInfo inside the bundle (before the SDK's ad-hoc codesign step seals it).
+if(SMTG_MAC)
+    set_target_properties(TransportProbe PROPERTIES
+        MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/mac/Info.plist.in
+        MACOSX_BUNDLE_GUI_IDENTIFIER "com.dphelmer.vstsequencers.TransportProbe"
+        MACOSX_BUNDLE_BUNDLE_NAME "TransportProbe"
+        MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+        MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION})
+    target_sources(TransportProbe PRIVATE mac/PkgInfo)
+    set_source_files_properties(mac/PkgInfo PROPERTIES MACOSX_PACKAGE_LOCATION ".")
+    # The SDK's own ad-hoc sign leaves Info.plist unbound ("Sealed Resources=none"); re-sign last.
+    get_target_property(PROBE_PKG TransportProbe SMTG_PLUGIN_PACKAGE_PATH)
+    add_custom_command(TARGET TransportProbe POST_BUILD
+        COMMAND codesign --force --sign - "${PROBE_PKG}"
+        COMMENT "Re-sign TransportProbe bundle (ad-hoc)")
+endif()

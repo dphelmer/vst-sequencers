@@ -224,7 +224,13 @@ tresult PLUGIN_API ProbeProcessor::process (ProcessData& data)
 		rec.flags |= kGenerated;
 		const double p0 = c->projectTimeMusic;
 		const double pps = c->tempo / 60.0 / c->sampleRate; // beats per sample
-		const double p1 = p0 + data.numSamples * pps;
+		double p1 = p0 + data.numSamples * pps;
+		// Live splits blocks at the loop end, but our tempo-based p1 can overshoot cycleEnd by a
+		// hair and fire a ghost note on the loop-end beat right before the real loop-start beat.
+		// The region past cycleEnd is never played, so clamp.
+		if ((st & ProcessContext::kCycleActive) && (st & ProcessContext::kCycleValid) &&
+		    p0 < c->cycleEndMusic && p1 > c->cycleEndMusic)
+			p1 = c->cycleEndMusic;
 
 		if (havePrev && !playStart)
 		{
