@@ -1,6 +1,7 @@
 #pragma once
 
 #include "public.sdk/source/vst/vsteditcontroller.h"
+#include "vstgui/plugin-bindings/vst3editor.h"
 
 namespace Euclid {
 
@@ -13,6 +14,7 @@ public:
 	}
 
 	Steinberg::tresult PLUGIN_API initialize (Steinberg::FUnknown* context) SMTG_OVERRIDE;
+	Steinberg::IPlugView* PLUGIN_API createView (Steinberg::FIDString name) SMTG_OVERRIDE;
 
 	// Show plain values (16, C3, 50%, On) instead of the SDK default normalized 0..1 floats.
 	Steinberg::tresult PLUGIN_API getParamStringByValue (Steinberg::Vst::ParamID id,

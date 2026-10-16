@@ -4,6 +4,7 @@
 #include "pluginterfaces/base/ustring.h"
 
 #include <cstdio>
+#include <cstring>
 
 using namespace Steinberg;
 using namespace Steinberg::Vst;
@@ -75,6 +76,14 @@ tresult PLUGIN_API EuclidController::initialize (FUnknown* context)
 	parameters.addParameter (midiChName, nullptr, 15, 9 / 15., ParameterInfo::kCanAutomate, kMidiChannel);
 
 	return result;
+}
+
+//------------------------------------------------------------------------
+Steinberg::IPlugView* PLUGIN_API EuclidController::createView (Steinberg::FIDString name)
+{
+	if (strcmp (name, Steinberg::Vst::ViewType::kEditor) == 0)
+		return new VSTGUI::VST3Editor (this, "view", "euclid.uidesc");
+	return nullptr;
 }
 
 //------------------------------------------------------------------------

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vstgui-ui-description version="1">
+	<fonts>
+	</fonts>
+	<colors>
+		<color name="Background" rgba="#1e1e1eff"/>
+		<color name="Column" rgba="#2a2a2aff"/>
+		<color name="KnobBack" rgba="#3a3a3aff"/>
+		<color name="KnobHandle" rgba="#c8c8c8ff"/>
+		<color name="KnobCorona" rgba="#6e6e6eff"/>
+		<color name="Text" rgba="#e6e6e6ff"/>
+		<color name="TextDim" rgba="#9a9a9aff"/>
+		<color name="MuteOn" rgba="#c05050ff"/>
+		<color name="MuteOff" rgba="#4a4a4aff"/>
+	</colors>
+	<template background-color="Background" background-color-draw-style="filled" class="CViewContainer" maxSize="650, 220" minSize="650, 220" mouse-enabled="true" name="view" opacity="1" origin="0, 0" size="650, 220" transparent="false">
+		<view back-color="Column" background-color-draw-style="filled and stroked" class="CViewContainer" mouse-enabled="true" opacity="1" origin="10, 6" size="135, 200" transparent="false">
+			<view back-color="Text" class="CTextLabel" default-value="0" font="~ NormalFont" font-antialias="true" font-color="Text" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="0, 2" size="135, 18" text-alignment="center" title="Ch1" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch1 Pul" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="5, 70" size="40, 12" text-alignment="center" title="Pul" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch1 Stp" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="49, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="49, 70" size="40, 12" text-alignment="center" title="Stp" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch1 Rot" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="93, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="93, 70" size="40, 12" text-alignment="center" title="Rot" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch1 Pitch" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="5, 138" size="40, 12" text-alignment="center" title="Pitch" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch1 Vel" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="49, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="49, 138" size="40, 12" text-alignment="center" title="Vel" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch1 Gate" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="93, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="93, 138" size="40, 12" text-alignment="center" title="Gate" transparent="true"/>
+			<view back-color="MuteOff" class="CTextButton" control-tag="Ch1 Mute" font="~ NormalFont" frame-color="TextDim" frame-width="1" kick-style="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 170" round-radius="4" size="125, 22" text-alignment="center" text-color="Text" text-color-highlighted="Text" title="Mute" transparent="false"/>
+		</view>
+		<view back-color="Column" background-color-draw-style="filled and stroked" class="CViewContainer" mouse-enabled="true" opacity="1" origin="155, 6" size="135, 200" transparent="false">
+			<view back-color="Text" class="CTextLabel" default-value="0" font="~ NormalFont" font-antialias="true" font-color="Text" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="0, 2" size="135, 18" text-alignment="center" title="Ch2" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch2 Pul" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="5, 70" size="40, 12" text-alignment="center" title="Pul" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch2 Stp" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="49, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="49, 70" size="40, 12" text-alignment="center" title="Stp" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch2 Rot" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="93, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="93, 70" size="40, 12" text-alignment="center" title="Rot" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch2 Pitch" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="5, 138" size="40, 12" text-alignment="center" title="Pitch" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch2 Vel" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="49, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="49, 138" size="40, 12" text-alignment="center" title="Vel" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch2 Gate" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="93, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="93, 138" size="40, 12" text-alignment="center" title="Gate" transparent="true"/>
+			<view back-color="MuteOff" class="CTextButton" control-tag="Ch2 Mute" font="~ NormalFont" frame-color="TextDim" frame-width="1" kick-style="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 170" round-radius="4" size="125, 22" text-alignment="center" text-color="Text" text-color-highlighted="Text" title="Mute" transparent="false"/>
+		</view>
+		<view back-color="Column" background-color-draw-style="filled and stroked" class="CViewContainer" mouse-enabled="true" opacity="1" origin="300, 6" size="135, 200" transparent="false">
+			<view back-color="Text" class="CTextLabel" default-value="0" font="~ NormalFont" font-antialias="true" font-color="Text" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="0, 2" size="135, 18" text-alignment="center" title="Ch3" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch3 Pul" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="5, 70" size="40, 12" text-alignment="center" title="Pul" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch3 Stp" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="49, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="49, 70" size="40, 12" text-alignment="center" title="Stp" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch3 Rot" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="93, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="93, 70" size="40, 12" text-alignment="center" title="Rot" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch3 Pitch" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="5, 138" size="40, 12" text-alignment="center" title="Pitch" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch3 Vel" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="49, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="49, 138" size="40, 12" text-alignment="center" title="Vel" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch3 Gate" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="93, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="93, 138" size="40, 12" text-alignment="center" title="Gate" transparent="true"/>
+			<view back-color="MuteOff" class="CTextButton" control-tag="Ch3 Mute" font="~ NormalFont" frame-color="TextDim" frame-width="1" kick-style="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 170" round-radius="4" size="125, 22" text-alignment="center" text-color="Text" text-color-highlighted="Text" title="Mute" transparent="false"/>
+		</view>
+		<view back-color="Column" background-color-draw-style="filled and stroked" class="CViewContainer" mouse-enabled="true" opacity="1" origin="445, 6" size="135, 200" transparent="false">
+			<view back-color="Text" class="CTextLabel" default-value="0" font="~ NormalFont" font-antialias="true" font-color="Text" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="0, 2" size="135, 18" text-alignment="center" title="Ch4" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch4 Pul" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="5, 70" size="40, 12" text-alignment="center" title="Pul" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch4 Stp" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="49, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="49, 70" size="40, 12" text-alignment="center" title="Stp" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch4 Rot" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="93, 28" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="93, 70" size="40, 12" text-alignment="center" title="Rot" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch4 Pitch" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="5, 138" size="40, 12" text-alignment="center" title="Pitch" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch4 Vel" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="49, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="49, 138" size="40, 12" text-alignment="center" title="Vel" transparent="true"/>
+			<view back-color="KnobBack" class="CKnob" control-tag="Ch4 Gate" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="93, 96" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+			<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="93, 138" size="40, 12" text-alignment="center" title="Gate" transparent="true"/>
+			<view back-color="MuteOff" class="CTextButton" control-tag="Ch4 Mute" font="~ NormalFont" frame-color="TextDim" frame-width="1" kick-style="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="5, 170" round-radius="4" size="125, 22" text-alignment="center" text-color="Text" text-color-highlighted="Text" title="Mute" transparent="false"/>
+		</view>
+		<view back-color="KnobBack" class="CKnob" control-tag="MIDI Channel" corona-color="KnobCorona" default-value="0.5" handle-color="KnobHandle" handle-line-width="2" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="590, 20" size="40, 40" transparent="false" wheel-inc-value="0.02"/>
+		<view back-color="TextDim" class="CTextLabel" default-value="0" font="~ NormalFontSmall" font-antialias="true" font-color="TextDim" frame-color="Background" frame-width="1" max-value="1" min-value="0" mouse-enabled="false" opacity="1" origin="580, 62" size="60, 24" text-alignment="center" title="MIDI Ch" transparent="true"/>
+	</template>
+	<variables/>
+	<custom/>
+	<bitmaps/>
+	<control-tags>
+		<control-tag name="Ch1 Pul" tag="0"/>
+		<control-tag name="Ch1 Stp" tag="1"/>
+		<control-tag name="Ch1 Rot" tag="2"/>
+		<control-tag name="Ch1 Pitch" tag="3"/>
+		<control-tag name="Ch1 Vel" tag="4"/>
+		<control-tag name="Ch1 Gate" tag="5"/>
+		<control-tag name="Ch1 Mute" tag="6"/>
+		<control-tag name="Ch2 Pul" tag="7"/>
+		<control-tag name="Ch2 Stp" tag="8"/>
+		<control-tag name="Ch2 Rot" tag="9"/>
+		<control-tag name="Ch2 Pitch" tag="10"/>
+		<control-tag name="Ch2 Vel" tag="11"/>
+		<control-tag name="Ch2 Gate" tag="12"/>
+		<control-tag name="Ch2 Mute" tag="13"/>
+		<control-tag name="Ch3 Pul" tag="14"/>
+		<control-tag name="Ch3 Stp" tag="15"/>
+		<control-tag name="Ch3 Rot" tag="16"/>
+		<control-tag name="Ch3 Pitch" tag="17"/>
+		<control-tag name="Ch3 Vel" tag="18"/>
+		<control-tag name="Ch3 Gate" tag="19"/>
+		<control-tag name="Ch3 Mute" tag="20"/>
+		<control-tag name="Ch4 Pul" tag="21"/>
+		<control-tag name="Ch4 Stp" tag="22"/>
+		<control-tag name="Ch4 Rot" tag="23"/>
+		<control-tag name="Ch4 Pitch" tag="24"/>
+		<control-tag name="Ch4 Vel" tag="25"/>
+		<control-tag name="Ch4 Gate" tag="26"/>
+		<control-tag name="Ch4 Mute" tag="27"/>
+		<control-tag name="MIDI Channel" tag="100"/>
+	</control-tags>
+	<gradients/>
+</vstgui-ui-description>
