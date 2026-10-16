@@ -38,6 +38,7 @@ struct BlockRecord
 	int32_t beatsEmitted;
 	int32_t offsEmitted;
 	int32_t ccEmitted;
+	int32_t virtSent;         // packets pushed to the CoreMIDI virtual source
 	int32_t tsNum, tsDen;
 	int64_t projectTimeSamples;
 	int64_t systemTime;
@@ -147,7 +148,7 @@ private:
 		FILE* ft = std::fopen ((dir + "/lifecycle.log").c_str (), "w");
 		if (fb)
 			std::fputs ("seq,state,flags,numSamples,processMode,numInEvents,beatsEmitted,offsEmitted,"
-			            "ccEmitted,tsNum,tsDen,projectTimeSamples,systemTime,sampleRate,ppq,"
+			            "ccEmitted,virtSent,tsNum,tsDen,projectTimeSamples,systemTime,sampleRate,ppq,"
 			            "expectedPpq,bar,cycleStart,cycleEnd,tempo\n",
 			            fb);
 		if (fe)
@@ -158,12 +159,13 @@ private:
 			while (blocks.pop (b))
 				if (fb)
 					std::fprintf (fb,
-					              "%llu,%u,%u,%d,%d,%d,%d,%d,%d,%d,%d,%lld,%lld,%.1f,%.6f,%.6f,%.6f,%.6f,%.6f,%.4f\n",
+					              "%llu,%u,%u,%d,%d,%d,%d,%d,%d,%d,%d,%d,%lld,%lld,%.1f,%.6f,%.6f,%.6f,%.6f,%.6f,%.4f\n",
 					              (unsigned long long)b.seq, b.state, b.flags, b.numSamples,
 					              b.processMode, b.numInEvents, b.beatsEmitted, b.offsEmitted,
-					              b.ccEmitted, b.tsNum, b.tsDen, (long long)b.projectTimeSamples,
-					              (long long)b.systemTime, b.sampleRate, b.ppq, b.expectedPpq, b.bar,
-					              b.cycleStart, b.cycleEnd, b.tempo);
+					              b.ccEmitted, b.virtSent, b.tsNum, b.tsDen,
+					              (long long)b.projectTimeSamples, (long long)b.systemTime,
+					              b.sampleRate, b.ppq, b.expectedPpq, b.bar, b.cycleStart,
+					              b.cycleEnd, b.tempo);
 			EventRecord e;
 			while (events.pop (e))
 				if (fe)

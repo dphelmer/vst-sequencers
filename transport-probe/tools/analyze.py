@@ -28,6 +28,8 @@ stopped = cnt(lambda s,f: not (s & PLAY))
 print(f"process() calls while stopped: {stopped}  (UNTESTED-in-Live question: >0 means Live keeps calling)")
 print(f"play starts: {cnt(lambda s,f: f & START)}, play stops: {cnt(lambda s,f: f & STOP)}, jumps: {cnt(lambda s,f: f & JUMP)}")
 print(f"notes emitted: {sum(int(r['beatsEmitted']) for r in rows)}, offs: {sum(int(r['offsEmitted']) for r in rows)}, CCs: {sum(int(r['ccEmitted']) for r in rows)}")
+virt = sum(int(r.get("virtSent", 0) or 0) for r in rows)
+print(f"virtual-port MIDI packets sent: {virt}")
 print(f"input events seen: {sum(int(r['numInEvents']) for r in rows)}")
 
 print("\nJumps (ppq vs expected):")

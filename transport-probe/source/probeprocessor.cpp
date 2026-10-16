@@ -65,6 +65,12 @@ tresult PLUGIN_API ProbeProcessor::initialize (FUnknown* context)
 	addAudioOutput (STR16 ("Silent Out"), SpeakerArr::kStereo);
 	addEventInput (STR16 ("Event In"), 16);
 	addEventOutput (STR16 ("Event Out"), 16);
+	// Virtual CoreMIDI source: Live tracks can take it via Ext. In with per-channel choosers
+	// (the external-input path preserves channels; track-to-track routing merges them).
+	// Skipped when context is null (ProbeSim).
+	if (context)
+		log.text ("virtual MIDI source: %s",
+		          virtOut.create ("TransportProbe MIDI") ? "TransportProbe MIDI" : "FAILED");
 	log.text ("initialize");
 	return kResultOk;
 }
@@ -72,6 +78,7 @@ tresult PLUGIN_API ProbeProcessor::initialize (FUnknown* context)
 tresult PLUGIN_API ProbeProcessor::terminate ()
 {
 	log.text ("terminate");
+	virtOut.destroy ();
 	log.stop ();
 	return AudioEffect::terminate ();
 }
@@ -209,8 +216,13 @@ tresult PLUGIN_API ProbeProcessor::process (ProcessData& data)
 				e.noteOff.noteId = a.noteId;
 				e.noteOff.velocity = 0.f;
 				out.add (e);
-				a.used = false;
 				++rec.offsEmitted;
+				for (int ch = 0; ch < kVirtChannels; ++ch)
+				{
+					virtOut.noteOff (ch, a.pitch);
+					++rec.virtSent;
+				}
+				a.used = false;
 			}
 	};
 
@@ -263,8 +275,13 @@ tresult PLUGIN_API ProbeProcessor::process (ProcessData& data)
 					e.noteOff.noteId = a.noteId;
 					e.noteOff.velocity = 0.f;
 					out.add (e);
-					a.used = false;
 					++rec.offsEmitted;
+					for (int ch = 0; ch < kVirtChannels; ++ch)
+					{
+						virtOut.noteOff (ch, a.pitch);
+						++rec.virtSent;
+					}
+					a.used = false;
 				}
 		};
 		emitDueOffs (); // from earlier blocks
@@ -291,6 +308,11 @@ tresult PLUGIN_API ProbeProcessor::process (ProcessData& data)
 			on.noteOn.noteId = nextNoteId++;
 			out.add (on);
 			++rec.beatsEmitted;
+			for (int ch = 0; ch < kVirtChannels; ++ch)
+			{
+				virtOut.noteOn (ch, on.noteOn.pitch, 100);
+				++rec.virtSent;
+			}
 			if (slot)
 			{
 				slot->used = true;
@@ -306,6 +328,11 @@ tresult PLUGIN_API ProbeProcessor::process (ProcessData& data)
 			cc.ppqPosition = static_cast<double> (b);
 			out.add (cc);
 			++rec.ccEmitted;
+			for (int ch = 0; ch < kVirtChannels; ++ch)
+			{
+				virtOut.cc (ch, kCtrlModWheel, (b * 8) & 127);
+				++rec.virtSent;
+			}
 			lastBeat = b;
 		}
 		emitDueOffs (); // short notes that start and end in this block

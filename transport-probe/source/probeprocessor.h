@@ -1,6 +1,7 @@
 #pragma once
 
 #include "probelog.h"
+#include "virtualmidi.h"
 
 #include "public.sdk/source/vst/vstaudioeffect.h"
 
@@ -13,7 +14,9 @@ namespace TransportProbe {
  *   - note on  (pitch 72 on bar downbeat assuming bars start at multiples of timeSigNumerator,
  *               else pitch 60), note off 1/4 beat later
  *   - legacy MIDI CC #1 (mod wheel) with value = (beat * 8) & 127, to test CC-out support
- * and logs everything the host gives us to ~/Library/Logs/TransportProbe/.
+ * The same notes/CCs are ALSO sent on a CoreMIDI virtual source ("TransportProbe MIDI") on
+ * channels 1-4, to test Live's Ext. In per-channel routing (bypasses the track-to-track
+ * channel merge). And logs everything the host gives us to ~/Library/Logs/TransportProbe/.
  */
 class ProbeProcessor : public Steinberg::Vst::AudioEffect
 {
@@ -47,6 +50,8 @@ private:
 	void resetState ();
 
 	ProbeLog log;
+	VirtualMidiOut virtOut;
+	static constexpr int kVirtChannels = 4; // virtual-port lanes: MIDI channels 1-4
 	ActiveNote active[kMaxActive];
 	uint64_t blockSeq {0};
 	bool wasPlaying {false};

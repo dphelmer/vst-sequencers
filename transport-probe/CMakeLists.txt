@@ -11,6 +11,8 @@ smtg_add_vst3plugin(TransportProbe
     source/cids.h
     source/version.h
     source/probelog.h
+    source/virtualmidi.h
+    source/virtualmidi.cpp
     source/probeprocessor.h
     source/probeprocessor.cpp
     source/probecontroller.h
@@ -19,13 +21,19 @@ smtg_add_vst3plugin(TransportProbe
 )
 target_include_directories(TransportProbe PRIVATE source)
 target_link_libraries(TransportProbe PRIVATE sdk)
+if(APPLE)
+    target_link_libraries(TransportProbe PRIVATE "-framework CoreMIDI")
+endif()
 smtg_target_configure_version_file(TransportProbe)
 
 # Offline simulation of process(); not part of the default build.
 add_executable(ProbeSim EXCLUDE_FROM_ALL
-    tests/sim.cpp source/probeprocessor.cpp)
+    tests/sim.cpp source/probeprocessor.cpp source/virtualmidi.cpp)
 target_include_directories(ProbeSim PRIVATE source)
 target_link_libraries(ProbeSim PRIVATE sdk sdk_hosting "-framework CoreFoundation")
+if(APPLE)
+    target_link_libraries(ProbeSim PRIVATE "-framework CoreMIDI")
+endif()
 
 # Ninja/Makefile generators get CMake's default Info.plist (CFBundlePackageType=APPL, empty
 # identifier, no PkgInfo), which makes Finder show the .vst3 as a plain folder. Use a BNDL plist
